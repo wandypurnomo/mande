@@ -2,7 +2,6 @@
 
 use App\Http\Requests\Auth\LoginRequest;
 use App\Interfaces\AuthRepositoryContract;
-use Illuminate\Http\RedirectResponse;
 
 class AuthRepository implements AuthRepositoryContract
 {
@@ -14,19 +13,14 @@ class AuthRepository implements AuthRepositoryContract
         $this->auth = auth();
     }
 
-    public function login(LoginRequest $request): RedirectResponse
+    public function login(LoginRequest $request): bool
     {
-        if (!$this->auth->attempt($request->only(["email", "password"]))) {
-            return back()->withErrors(["failed" => __("auth.failed")]);
-        }
-
-        return redirect("/");
+        return $this->auth->attempt($request->only(["email", "password"]));
     }
 
-    public function logout(): RedirectResponse
+    public function logout(): void
     {
         $this->auth->logout();
-        return redirect("/")->withSuccess("Logout success");
     }
 
     public function setGuard(String $guard): void

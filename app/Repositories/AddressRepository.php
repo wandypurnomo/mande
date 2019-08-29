@@ -69,11 +69,6 @@ class AddressRepository implements AddressRepositoryContract
         $data->update(["is_primary" => ActiveStatus::ACTIVE]);
     }
 
-    private function setAllAsNotPrimary(): void
-    {
-        $this->model->newQuery()->where("user_id", $this->userId)->update(["is_primary" => ActiveStatus::INACTIVE]);
-    }
-
     public function removePrimary(String $id): void
     {
         $data = $this->find($id);
@@ -84,5 +79,10 @@ class AddressRepository implements AddressRepositoryContract
     {
         $this->guard = $guard;
         $this->userId = auth($this->guard)->user()->id;
+    }
+
+    private function setAllAsNotPrimary(): void
+    {
+        $this->model->newQuery()->where("user_id", $this->userId)->update(["is_primary" => ActiveStatus::INACTIVE]);
     }
 }
