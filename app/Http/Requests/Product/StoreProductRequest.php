@@ -28,8 +28,9 @@ class StoreProductRequest extends FormRequest
             "name" => "required|unique",
             "description" => "required",
             "image_file" => "required|image",
-            "price" => "required|numeric",
-            "label_id" => "required|numeric"
+            "base_price" => "required|numeric",
+            "selling_price" => "required|numeric",
+            "label_id" => "required|numeric",
         ];
     }
 }

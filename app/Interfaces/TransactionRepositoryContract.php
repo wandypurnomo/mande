@@ -25,7 +25,7 @@ interface TransactionRepositoryContract
 
     public function removeCart(String $id): void;
 
-    public function checkout(CheckoutRequest $request): Model;
+    public function checkout(CheckoutRequest $request): void;
 
     public function setAsPaid(String $id): void;
 

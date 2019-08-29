@@ -22,7 +22,11 @@ class CreateAddressesTable extends Migration
             $table->string("recipient");
             $table->string("phone");
             $table->boolean("is_primary")->default(0);
+            $table->string("lat")->nullable();
+            $table->string("lng")->nullable();
             $table->timestamps();
+
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
         });
     }
 

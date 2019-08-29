@@ -13,7 +13,7 @@ class CheckoutRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "transaction_id" => "required|exists:transactions,id",
+            "address_id" => "required|exists:addresses,id"
         ];
     }
 }

@@ -20,7 +20,8 @@ class CreateProductsTable extends Migration
             $table->string("name");
             $table->string("description");
             $table->string("image")->nullable();
-            $table->unsignedInteger("price")->default(0);
+            $table->unsignedInteger("base_price")->default(0);
+            $table->unsignedInteger("sell_price")->default(0);
             $table->unsignedTinyInteger("label_id")->default(0);
             $table->softDeletes();
             $table->timestamps();

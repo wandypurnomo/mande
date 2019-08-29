@@ -18,11 +18,14 @@ class CreateTransactionDetailsTable extends Migration
             $table->uuid("transaction_id");
             $table->string("product_id")->nullable();
             $table->string("product_name");
-            $table->unsignedInteger("quantity");
             $table->unsignedInteger("product_price");
+            $table->unsignedInteger("product_base_price");
+            $table->unsignedInteger("quantity");
             $table->unsignedInteger("subtotal");
             $table->text("notes")->nullable();
             $table->timestamps();
+
+            $table->foreign("transaction_id")->references("id")->on("transactions")->onDelete("cascade");
         });
     }
 

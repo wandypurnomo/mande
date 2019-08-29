@@ -21,7 +21,11 @@ class CreateTransactionAddressesTable extends Migration
             $table->string("hint")->nullable();
             $table->string("recipient");
             $table->string("phone");
+            $table->string("lat")->nullable();
+            $table->string("lng")->nullable();
             $table->timestamps();
+
+            $table->foreign("transaction_id")->references("id")->on("transactions")->onDelete("cascade");
         });
     }
 

@@ -23,6 +23,8 @@ class CreateStocksTable extends Migration
             $table->string("description");
             $table->dateTime("accepted_at")->nullable();
             $table->timestamps();
+
+            $table->foreign("product_id")->references("id")->on("products")->onDelete("cascade");
         });
     }
 

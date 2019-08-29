@@ -21,7 +21,10 @@ class CreateTransactionsTable extends Migration
             $table->unsignedTinyInteger("payment_status");
             $table->text("notes")->nullable();
             $table->text("failed_reason")->nullable();
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
         });
     }
 

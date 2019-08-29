@@ -90,7 +90,7 @@ class ProductRepository implements ProductRepositoryContract
             $request->merge(["image" => $filename]);
         }
         $request->merge(["user_id" => $request->user()->id]);
-        $only = $request->only(["category_id", "name", "description", "image", "price", "label_id", "user_id"]);
+        $only = $request->only(["category_id", "name", "description", "image", "price", "label_id", "user_id", "selling_price", "base_price"]);
         $store = $this->product->newQuery()->create($only);
         return $store;
     }
