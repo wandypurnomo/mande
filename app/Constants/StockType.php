@@ -2,10 +2,16 @@
 
 use App\Interfaces\ConstantInterface;
 
-class StockType implements ConstantInterface{
+class StockType implements ConstantInterface
+{
 
     const STOCK = 1;
     const ADJUSTMENT = 2;
+
+    public static function label(int $id): String
+    {
+        return array_search($id, array_flip(self::labels()));
+    }
 
     public static function labels(): array
     {
@@ -13,10 +19,5 @@ class StockType implements ConstantInterface{
             self::STOCK => "Stock",
             self::ADJUSTMENT => "Adjustment"
         ];
-    }
-
-    public static function label(int $id): String
-    {
-        return array_search($id,array_flip(self::labels()));
     }
 }

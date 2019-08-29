@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 class AuthRepository implements AuthRepositoryContract
 {
     public $auth;
+    public $guard;
 
     public function __construct()
     {
@@ -26,5 +27,11 @@ class AuthRepository implements AuthRepositoryContract
     {
         $this->auth->logout();
         return redirect("/")->withSuccess("Logout success");
+    }
+
+    public function setGuard(String $guard): void
+    {
+        $this->guard = $guard;
+        $this->auth = auth($this->guard);
     }
 }

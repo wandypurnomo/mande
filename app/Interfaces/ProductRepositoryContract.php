@@ -2,7 +2,6 @@
 
 use App\Http\Requests\Product\AddStockRequest;
 use App\Http\Requests\Product\StoreProductRequest;
-use App\Http\Requests\Product\UpdateProductRequest;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;

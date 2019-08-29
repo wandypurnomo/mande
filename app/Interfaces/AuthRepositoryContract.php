@@ -8,4 +8,6 @@ interface AuthRepositoryContract
     public function login(LoginRequest $request): RedirectResponse;
 
     public function logout(): RedirectResponse;
+
+    public function setGuard(String $guard): void;
 }

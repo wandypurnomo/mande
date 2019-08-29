@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable,EntrustUserTrait;
+    use Notifiable, EntrustUserTrait;
 
     public $incrementing = false;
     protected $hidden = [
